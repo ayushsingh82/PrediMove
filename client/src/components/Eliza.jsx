@@ -66,7 +66,7 @@ function Eliza() {
               onClick={() => navigate('/')}
               className="text-3xl font-bold text-pink-600 cursor-pointer hover:text-pink-500 transition-colors"
             >
-              PrediFlow
+              MoveScan
             </h1>
           </div>
           <ConnectButton />

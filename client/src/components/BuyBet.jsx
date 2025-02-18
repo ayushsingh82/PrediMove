@@ -133,29 +133,29 @@ function BuyBet() {
 
 
   return (
-    <div className="min-h-screen bg-pink-200 flex flex-col items-center justify-center p-8">
-      {/* Header with Wallet Connection */}
+    <div className="min-h-screen bg-gradient-to-b from-[#FFF7E6] to-[#FFEDCC] flex flex-col items-center justify-center p-8">
+      {/* Header */}
       <div className="w-full max-w-3xl mb-16">
         <div className="flex flex-col items-center mb-4">
           <h1 
             onClick={() => navigate('/')}
-            className="text-3xl font-bold text-pink-600 cursor-pointer hover:text-pink-500 transition-colors mb-4"
+            className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
           >
-            PrediFlow
+            MoveScan
           </h1>
-          <div className="bg-blue-500 rounded-2xl p-2">
+          <div className="bg-[#FFB84D] rounded-2xl p-2">
             <ConnectButton />
           </div>
         </div>
-        <div className="h-px bg-pink-800/60 w-full mt-4"></div>
+        <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>
       </div>
 
       {/* Purchase Form */}
       <div className="w-full max-w-xl mb-16">
-        <div className="bg-pink-300 rounded-2xl p-8 border-2 border-pink-500">
+        <div className="bg-white/80 rounded-2xl p-8 border-2 border-[#FFB84D]">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <FaShoppingCart className="text-pink-400 text-3xl" />
-            <h2 className="text-2xl font-bold text-white text-center">Purchase Shares</h2>
+            <FaShoppingCart className="text-[#FF9900] text-3xl" />
+            <h2 className="text-2xl font-bold text-[#FF9900] text-center">Purchase Shares</h2>
           </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -163,15 +163,15 @@ function BuyBet() {
             {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
             
             {/* Amount Input */}
-            <div className="bg-pink-200 p-5 rounded-xl border border-pink-400">
-              <label className="block text-black text-sm font-semibold mb-2">
+            <div className="bg-white/80 p-5 rounded-xl border border-[#FFB84D]">
+              <label className="block text-[#664400] font-semibold mb-2">
                 Amount (FLOW)
               </label>
               <input
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border-2 border-pink-400 text-black placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-white border-2 border-[#FFB84D] text-[#664400] placeholder-gray-500 focus:outline-none focus:border-[#FF9900] transition-colors"
                 placeholder="Enter amount..."
                 min="0"
                 step="0.1"
@@ -179,8 +179,8 @@ function BuyBet() {
             </div>
 
             {/* Options */}
-            <div className="bg-pink-200 p-5 rounded-xl border border-pink-400">
-              <label className="block text-black text-sm font-semibold mb-3">
+            <div className="bg-white/80 p-5 rounded-xl border border-[#FFB84D]">
+              <label className="block text-[#664400] font-semibold mb-3">
                 Choose Option
               </label>
               <div className="grid grid-cols-2 gap-4">
@@ -189,8 +189,8 @@ function BuyBet() {
                   onClick={() => setSelectedOption('yes')}
                   className={`px-4 py-3 rounded-xl border-2 transition-all transform ${
                     selectedOption === 'yes'
-                      ? 'bg-gradient-to-r from-pink-600 to-pink-500 text-white border-pink-500 scale-105'
-                      : 'bg-white text-black border-pink-400 hover:border-pink-500'
+                      ? 'bg-gradient-to-r from-[#FF9900] to-[#CC7A00] text-[#FF9900] border-[#FFB84D] scale-105'
+                      : 'bg-white text-[#664400] border-[#FFB84D] hover:border-[#FF9900]'
                   }`}
                 >
                   Yes
@@ -200,8 +200,8 @@ function BuyBet() {
                   onClick={() => setSelectedOption('no')}
                   className={`px-4 py-3 rounded-xl border-2 transition-all transform ${
                     selectedOption === 'no'
-                      ? 'bg-gradient-to-r from-pink-600 to-pink-500 text-white border-pink-500 scale-105'
-                      : 'bg-white text-black border-pink-400 hover:border-pink-500'
+                      ? 'bg-gradient-to-r from-[#FF9900] to-[#CC7A00] text-[#FF9900] border-[#FFB84D] scale-105'
+                      : 'bg-white text-[#664400] border-[#FFB84D] hover:border-[#FF9900]'
                   }`}
                 >
                   No
@@ -213,8 +213,8 @@ function BuyBet() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 
-                text-white font-bold py-3.5 px-6 rounded-xl border-2 border-pink-500/50 transition-all 
+              className={`w-full bg-gradient-to-r from-[#FF9900] to-[#CC7A00] hover:from-[#CC7A00] hover:to-[#FF9900] 
+                text-[#FF9900] font-bold py-3.5 px-6 rounded-xl border-2 border-[#FFB84D]/50 transition-all 
                 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg
                 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
@@ -226,23 +226,23 @@ function BuyBet() {
 
       {/* Navigation Icons */}
       <div className="w-full max-w-3xl">
-        <div className="bg-pink-300 rounded-2xl p-6 border-2 border-pink-500 flex justify-between items-center px-16">
+        <div className="bg-white/80 rounded-2xl p-6 border-2 border-[#FFB84D] flex justify-between items-center px-16">
           <button 
             onClick={() => navigate('/live-bets')}
-            className="flex flex-col items-center gap-2 text-black"
+            className="flex flex-col items-center gap-2 text-[#664400]"
           >
             <FaChartLine size={32} />
             <span className="text-sm">Live Bets</span>
           </button>
           <button 
             onClick={() => navigate('/create')}
-            className="bg-pink-600 hover:bg-pink-500 text-white p-5 rounded-full transition-colors border-2 border-pink-500"
+            className="bg-[#FF9900] hover:bg-[#CC7A00] text-[#FF9900] p-5 rounded-full transition-colors border-2 border-[#FFB84D]"
           >
             <FaPlus size={36} />
           </button>
           <button 
             onClick={() => navigate('/profile')}
-            className="flex flex-col items-center gap-2 text-black"
+            className="flex flex-col items-center gap-2 text-[#664400]"
           >
             <FaUser size={32} />
             <span className="text-sm">Profile</span>

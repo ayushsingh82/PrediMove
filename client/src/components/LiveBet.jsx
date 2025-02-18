@@ -136,21 +136,21 @@ function LiveBet() {
   }
 
   return (
-    <div className="min-h-screen bg-pink-200 flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-gradient-to-b from-[#FFF7E6] to-[#FFEDCC] flex flex-col items-center justify-center p-8">
       {/* Header */}
-      <div className="w-full max-w-3xl mb-16 z-10">
+      <div className="w-full max-w-3xl mb-16">
         <div className="flex flex-col items-center mb-4">
           <h1 
             onClick={() => navigate('/')}
-            className="text-3xl font-bold text-pink-600 cursor-pointer hover:text-pink-500 transition-colors mb-4"
+            className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
           >
-            PrediFlow
+            MoveScan
           </h1>
-          <div className="bg-blue-500 rounded-2xl p-2">
+          <div className="bg-[#FFB84D] rounded-2xl p-2">
             <ConnectButton />
           </div>
         </div>
-        <div className="h-px bg-pink-800/60 w-full mt-4"></div>
+        <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>
       </div>
 
       {/* Swipeable Card */}
@@ -170,20 +170,20 @@ function LiveBet() {
             onDragEnd={handleDragEnd}
             className="w-full cursor-grab active:cursor-grabbing"
           >
-            <div className="bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl overflow-hidden shadow-xl">
+            <div className="bg-gradient-to-br from-[#FF9900]/80 to-[#CC7A00]/80 rounded-2xl overflow-hidden shadow-xl">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiLz48L2c+PC9zdmc+')]"></div>
 
               {/* Card Content */}
               <div className="p-6">
                 {/* Question Number */}
-                <div className="text-white/80 text-sm mb-4">
+                <div className="text-[#664400] text-sm mb-4">
                   Question {currentIndex + 1} of {questions.length}
                 </div>
 
                 {/* Question */}
                 <div className="min-h-[100px] flex items-center mb-6">
-                  <h3 className="text-xl font-bold text-white text-center w-full">
+                  <h3 className="text-xl font-bold text-[#664400] text-center w-full">
                     {questions[currentIndex]}
                   </h3>
                 </div>
@@ -227,7 +227,7 @@ function LiveBet() {
       <div className="w-full max-w-xl mb-16 flex justify-center z-20">
         <button
           onClick={handleElizaClick}
-          className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-xl text-sm font-medium hover:from-purple-500 hover:to-blue-500 transition-colors"
+          className="bg-gradient-to-r from-[#FF9900] to-[#CC7A00] text-[#664400] px-6 py-2 rounded-xl text-sm font-medium hover:from-[#CC7A00] hover:to-[#FF9900] transition-colors"
         >
           Ask Eliza AI
         </button>
@@ -236,16 +236,16 @@ function LiveBet() {
       {/* Chat Modal */}
       {showChat && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[9999]">
-          <div className="bg-pink-200 rounded-2xl w-full max-w-xl relative">
+          <div className="bg-[#FFF7E6] rounded-2xl w-full max-w-xl relative">
             {/* Chat Header */}
-            <div className="bg-gradient-to-r from-pink-500 to-purple-500 p-4 rounded-t-2xl flex items-center justify-between">
+            <div className="bg-gradient-to-r from-[#FF9900] to-[#CC7A00] p-4 rounded-t-2xl flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <FaRobot className="text-white text-2xl" />
-                <h2 className="text-lg font-bold text-white">Eliza AI powered by Polymarket</h2>
+                <FaRobot className="text-[#664400] text-2xl" />
+                <h2 className="text-lg font-bold text-[#664400]">Eliza AI powered by Polymarket</h2>
               </div>
               <button 
                 onClick={() => setShowChat(false)}
-                className="text-white hover:text-pink-200 transition-colors"
+                className="text-[#664400] hover:text-[#FFB84D] transition-colors"
               >
                 <FaTimes size={24} />
               </button>
@@ -261,8 +261,8 @@ function LiveBet() {
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                       msg.isBot
-                        ? 'bg-white text-black rounded-tl-none'
-                        : 'bg-pink-500 text-white rounded-tr-none'
+                        ? 'bg-white text-[#664400] rounded-tl-none border border-[#FFB84D]'
+                        : 'bg-[#FF9900] text-[#664400] rounded-tr-none'
                     }`}
                   >
                     {msg.text}
@@ -271,7 +271,7 @@ function LiveBet() {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white text-black rounded-2xl rounded-tl-none px-4 py-2">
+                  <div className="bg-white text-[#664400] rounded-2xl rounded-tl-none px-4 py-2 border border-[#FFB84D]">
                     Typing...
                   </div>
                 </div>
@@ -279,20 +279,20 @@ function LiveBet() {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSend} className="p-4 border-t border-pink-400">
+            <form onSubmit={handleSend} className="p-4 border-t border-[#FFB84D]">
               <div className="flex gap-2">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-2 rounded-xl border-2 border-pink-400 focus:outline-none focus:border-pink-500"
+                  className="flex-1 px-4 py-2 rounded-xl border-2 border-[#FFB84D] focus:outline-none focus:border-[#FF9900] text-[#664400]"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
-                  className={`bg-pink-500 text-white p-3 rounded-xl transition-colors ${
-                    isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-pink-600'
+                  className={`bg-[#FF9900] text-[#664400] p-3 rounded-xl transition-colors ${
+                    isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#CC7A00]'
                   }`}
                   disabled={isLoading}
                 >
@@ -305,24 +305,24 @@ function LiveBet() {
       )}
 
       {/* Navigation Icons */}
-      <div className="w-full max-w-3xl z-30">
-        <div className="bg-pink-300 rounded-2xl p-6 border-2 border-pink-500 flex justify-between items-center px-16">
+      <div className="w-full max-w-3xl">
+        <div className="bg-white/80 rounded-2xl p-6 border-2 border-[#FFB84D] flex justify-between items-center px-16">
           <button 
             onClick={() => navigate('/live-bets')}
-            className="flex flex-col items-center gap-2 text-black cursor-pointer"
+            className="flex flex-col items-center gap-2 text-[#664400]"
           >
             <FaChartLine size={32} />
             <span className="text-sm">Live Bets</span>
           </button>
           <button 
             onClick={() => navigate('/create')}
-            className="bg-pink-600 hover:bg-pink-500 text-white p-5 rounded-full transition-colors border-2 border-pink-500 cursor-pointer"
+            className="bg-[#FF9900] hover:bg-[#CC7A00] text-white p-5 rounded-full transition-colors border-2 border-[#FFB84D]"
           >
             <FaPlus size={36} />
           </button>
           <button 
             onClick={() => navigate('/profile')}
-            className="flex flex-col items-center gap-2 text-black cursor-pointer"
+            className="flex flex-col items-center gap-2 text-[#664400]"
           >
             <FaUser size={32} />
             <span className="text-sm">Profile</span>
