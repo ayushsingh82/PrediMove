@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aptos-labs/wallet-standard": "^0.3.0",
     "@goat-sdk/plugin-polymarket": "^0.3.10",
     "@google/generative-ai": "^0.21.0",
     "@privy-io/react-auth": "^2.1.0",

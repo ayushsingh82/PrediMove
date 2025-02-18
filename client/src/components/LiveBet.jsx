@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ConnectButton } from './ConnectButton'
+// import { ConnectButton } from './ConnectButton'
 import { FaChartLine, FaPlus, FaUser, FaRobot, FaPaperPlane, FaTimes } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion'
@@ -144,10 +144,10 @@ function LiveBet() {
             onClick={() => navigate('/')}
             className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
           >
-            MoveScan
+            PrediMove
           </h1>
           <div className="bg-[#FFB84D] rounded-2xl p-2">
-            <ConnectButton />
+         Connect
           </div>
         </div>
         <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>

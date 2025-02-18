@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaChartLine, FaPlus, FaUser } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { ConnectButton } from './ConnectButton'
+// import { ConnectButton } from './ConnectButton'
 
 function Profile() {
   const navigate = useNavigate()
@@ -15,10 +15,10 @@ function Profile() {
             onClick={() => navigate('/')}
             className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
           >
-            MoveScan
+            PrediMove
           </h1>
           <div className="bg-[#FFB84D] rounded-2xl p-2">
-            <ConnectButton />
+           Connect
           </div>
         </div>
         <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>

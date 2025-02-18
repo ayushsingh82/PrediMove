@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ConnectButton } from './ConnectButton'
+// import { ConnectButton } from './ConnectButton'
 
 function Home() {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ function Home() {
             🚀 🎯 🎊
           </div>
           <h1 className="text-3xl md:text-3xl font-bold text-[#FF9900] mb-8">
-            MoveScan
+            PrediMove
           </h1>
           <p className="text-xl text-[#664400] mb-12">
             <span className="px-4 py-2 rounded-lg text-sm font-bold">
@@ -28,7 +28,7 @@ function Home() {
           </p>
           <div className="flex justify-center gap-4">
             <div className="bg-[#FFB84D] rounded-2xl p-2">
-              <ConnectButton />
+             Connect
             </div>
             <button 
               onClick={() => navigate('/profile')}
