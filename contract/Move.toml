@@ -1,0 +1,17 @@
+[package]
+name = "my_todo_list"
+version = "1.0.0"
+authors = []
+
+[addresses]
+
+[dev-addresses]
+
+onchain_bio_addr = "0x3813495975339225f0b2bb4eda171792e15de65a62021af638d8668e35d21d40"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
