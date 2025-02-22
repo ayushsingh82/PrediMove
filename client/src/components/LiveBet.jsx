@@ -4,8 +4,9 @@ import { FaChartLine, FaPlus, FaUser, FaRobot, FaPaperPlane, FaTimes } from 'rea
 import { useNavigate } from 'react-router-dom'
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion'
 import { GoogleGenerativeAI } from "@google/generative-ai"
-import { publicClient } from '../config'
+// import { publicClient } from '../config'
 import { wagmiAbi } from '../abi'
+import ConnectButton from './ConnectButton'
 
 function LiveBet() {
   const navigate = useNavigate()
@@ -140,15 +141,8 @@ function LiveBet() {
       {/* Header */}
       <div className="w-full max-w-3xl mb-16">
         <div className="flex flex-col items-center mb-4">
-          <h1 
-            onClick={() => navigate('/')}
-            className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
-          >
-            PrediMove
-          </h1>
-          <div className="bg-[#FFB84D] rounded-2xl p-2">
-         Connect
-          </div>
+          <h1 className="text-3xl font-bold text-[#FF9900] mb-4">PrediMove</h1>
+          <ConnectButton />
         </div>
         <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>
       </div>

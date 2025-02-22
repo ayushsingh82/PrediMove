@@ -10,14 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.6.1",
+    "@aptos-labs/wallet-adapter-react": "^3.7.8",
     "@aptos-labs/wallet-standard": "^0.3.0",
     "@goat-sdk/plugin-polymarket": "^0.3.10",
     "@google/generative-ai": "^0.21.0",
+    "@nightlylabs/aptos-wallet-adapter-plugin": "^0.2.12",
     "@nightlylabs/wallet-selector-aptos": "^0.1.19",
     "@privy-io/react-auth": "^2.1.0",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@tailwindcss/vite": "^4.0.0",
     "@tanstack/react-query": "^5.65.1",
+    "antd": "^5.24.1",
     "framer-motion": "^12.0.6",
     "openai": "^4.82.0",
     "react": "^18.3.1",

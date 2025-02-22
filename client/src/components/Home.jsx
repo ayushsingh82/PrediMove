@@ -1,89 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from "sonner"
-import { getAdapter } from './misc/adapter'
-import { AccountInfo, UserResponseStatus ,Network } from "@aptos-labs/wallet-standard"
-
+import ConnectButton from './ConnectButton'
 
 function Home() {
   const navigate = useNavigate()
-  const [userAccount, setUserAccount] = useState()
-  const [isLoading, setIsLoading] = useState(true)
-
-  const networkInfo = {
-    chainId: 27,
-    name: Network.CUSTOM,
-    url: "https://aptos.testnet.suzuka.movementlabs.xyz/v1",
-  };
-
-  useEffect(() => {
-    const init = async () => {
-      try {
-        setIsLoading(true)
-        const adapter = await getAdapter()
-        if (await adapter.canEagerConnect()) {
-          try {
-            const response = await adapter.connect()
-            if (response.status === UserResponseStatus.APPROVED) {
-              setUserAccount(response.args)
-            }
-          } catch (error) {
-            console.error('Connection error:', error)
-            await adapter.disconnect().catch(() => {})
-          }
-        }
-
-        // Events
-        adapter.on("connect", (accInfo) => {
-          if (accInfo && "address" in accInfo) {
-            setUserAccount(accInfo)
-          }
-        })
-
-        adapter.on("disconnect", () => {
-          setUserAccount(undefined)
-        })
-
-        adapter.on("accountChange", (accInfo) => {
-          if (accInfo && "address" in accInfo) {
-            setUserAccount(accInfo)
-          }
-        })
-      } catch (error) {
-        console.error('Initialization error:', error)
-        toast.error('Failed to initialize wallet connection')
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    init()
-  }, [])
-
-  const handleConnect = async () => {
-    const adapter = await getAdapter()
-    try {
-      const response = await adapter.connect()
-      if (response.status === UserResponseStatus.APPROVED) {
-        setUserAccount(response.args)
-        toast.success("Wallet connected!")
-      } else {
-        toast.error("User rejected connection")
-      }
-    } catch (error) {
-      toast.error("Wallet connection failed!")
-      await adapter.disconnect().catch(() => {})
-    }
-  }
-
-  const handleDisconnect = async () => {
-    try {
-      const adapter = await getAdapter()
-      await adapter.disconnect()
-      setUserAccount(undefined)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FFF7E6] to-[#FFEDCC] flex items-center">
@@ -106,26 +26,19 @@ function Home() {
               Predict the future and earn rewards.
             </span>
           </p>
-          <div className="flex justify-center gap-4">
-            <div 
-              onClick={!isLoading && (userAccount ? handleDisconnect : handleConnect)}
-              className={`bg-[#FFB84D] rounded-2xl p-2 cursor-pointer hover:bg-[#CC7A00] transition-colors ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              {isLoading ? 'Initializing...' : 
-                userAccount ? 
-                  `Connected: ${userAccount.address.toString().slice(0,6)}...${userAccount.address.toString().slice(-4)}` 
-                  : 'Connect Wallet'
-              }
-            </div>
-            <button 
-              onClick={() => navigate('/profile')}
-              className="bg-[#FF9900] text-white font-bold py-3 px-8 rounded-2xl border-2 border-[#FF9900] hover:bg-[#CC7A00] hover:border-[#CC7A00] transition-colors text-xl"
-            >
-              Start
-            </button>
+          
+          {/* Connection Status */}
+          <div className="flex flex-col items-center gap-4 mb-8">
+            <ConnectButton />
           </div>
+
+          {/* Start Button */}
+          <button 
+            onClick={() => navigate('/profile')}
+            className="bg-[#FF9900] text-white font-bold py-3 px-8 rounded-2xl border-2 border-[#FF9900] hover:bg-[#CC7A00] hover:border-[#CC7A00] transition-colors text-xl"
+          >
+            Start
+          </button>
         </div>
       </div>
     </div>

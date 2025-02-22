@@ -1,73 +1,112 @@
-import { usePrivy } from '@privy-io/react-auth'
-import { useEffect } from 'react'
-import { chainConfig } from '../config'
+import React, { useState, useEffect } from 'react'
 
-export function ConnectButton() {
-  const { login, logout, authenticated, user, ready } = usePrivy()
+export const ConnectButton = () => {
+  const [connected, setConnected] = useState(false)
+  const [address, setAddress] = useState('')
+
+  // Movement Bardock Testnet Configuration
+  const networkConfig = {
+    chainId: '0xfa', // 250 in hex
+    name: "Movement Bardock Testnet",
+    rpcUrl: "https://aptos.testnet.bardock.movementlabs.xyz/v1",
+    blockExplorerUrl: "https://explorer.movementlabs.xyz/",
+    nativeCurrency: {
+      name: 'MOVE',
+      symbol: 'MOVE',
+      decimals: 18
+    }
+  }
 
   useEffect(() => {
-    if (window.ethereum && authenticated) {
-      setupNetwork()
-    }
-  }, [authenticated])
-
-  const setupNetwork = async () => {
-    try {
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: chainConfig.chainId }],
-      })
-    } catch (switchError) {
-      // If chain doesn't exist, add it
-      if (switchError.code === 4902) {
-        try {
-          await window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [chainConfig],
-          })
-        } catch (addError) {
-          console.error('Error adding chain:', addError)
+    const initWallet = async () => {
+      try {
+        const provider = window.ethereum
+        if (provider) {
+          const accounts = await provider.request({ method: 'eth_accounts' })
+          if (accounts && accounts.length > 0) {
+            const addr = accounts[0]
+            setAddress(addr)
+            setConnected(true)
+          }
         }
+      } catch (error) {
+        console.error('Wallet initialization error:', error)
       }
     }
+
+    initWallet()
+  }, [])
+
+  const handleConnect = async () => {
+    try {
+      if (!connected) {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: networkConfig.chainId,
+            chainName: networkConfig.name,
+            rpcUrls: [networkConfig.rpcUrl],
+            blockExplorerUrls: [networkConfig.blockExplorerUrl],
+            nativeCurrency: networkConfig.nativeCurrency
+          }]
+        })
+
+        const accounts = await window.ethereum.request({ 
+          method: 'eth_requestAccounts' 
+        })
+        
+        if (accounts && accounts.length > 0) {
+          const addr = accounts[0]
+          setAddress(addr)
+          setConnected(true)
+        }
+      } else {
+        setConnected(false)
+        setAddress('')
+      }
+    } catch (error) {
+      console.error('Connection error:', error)
+      if (error.code === 4001) {
+        console.log('User rejected connection')
+        return
+      }
+      setConnected(false)
+      setAddress('')
+    }
   }
 
-  if (!ready) {
-    return (
-      <button className="bg-blue-600 text-white font-bold py-2 px-6 rounded-xl opacity-50">
-        Loading...
-      </button>
-    )
-  }
-
-  if (!authenticated) {
-    return (
-      <button
-        onClick={login}
-        className="bg-blue-600 text-white font-bold py-2 px-6 rounded-xl hover:bg-blue-700 transition-colors"
-      >
-        Connect Wallet
-      </button>
-    )
-  }
-
-  // Get the shortened version of the wallet address
-  const shortenAddress = (address) => {
-    if (!address) return ''
-    return `${address.slice(0, 6)}...${address.slice(-4)}`
+  const formatAddress = (addr) => {
+    if (!addr) return ''
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-black font-medium">
-        {shortenAddress(user?.wallet?.address)}
-      </span>
-      <button
-        onClick={logout}
-        className="bg-blue-600 text-white font-bold py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
-      >
-        Disconnect
-      </button>
+    <div className="flex flex-col items-center gap-4">
+      {connected ? (
+        <div className="bg-[#FFB84D] rounded-2xl p-4">
+          <p className="text-[#664400] font-medium mb-2">
+            Connected to Movement Bardock Testnet
+          </p>
+          <p className="text-[#664400]">
+            {formatAddress(address)}
+          </p>
+          <button 
+            onClick={handleConnect}
+            className="mt-2 text-sm text-[#FF9900] hover:text-[#CC7A00]"
+          >
+            Disconnect
+          </button>
+        </div>
+      ) : (
+        <button 
+          onClick={handleConnect}
+          className="bg-[#FFB84D] rounded-2xl p-3 cursor-pointer hover:bg-[#CC7A00] transition-colors text-[#664400]"
+        >
+          Connect to Movement Bardock
+        </button>
+      )}
     </div>
   )
-} 
+}
+
+export default ConnectButton 

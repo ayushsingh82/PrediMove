@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 // import { ConnectButton } from './ConnectButton'
 import { FaChartLine, FaPlus, FaUser, FaQuestionCircle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { publicClient, getWalletClient, chainConfig } from '../config'
+// import { publicClient, getWalletClient, chainConfig } from '../config'
 import { wagmiAbi } from '../abi'
 import { usePrivy } from '@privy-io/react-auth'
 import { createWalletClient ,custom } from 'viem'
 // import { flowTestnet } from 'viem/chains'
 import { parseGwei } from 'viem'
 import { createPublicClient , http } from 'viem'
+import ConnectButton from './ConnectButton'
 
 
 const flowTestnet = {
@@ -136,15 +137,8 @@ function Create() {
       {/* Header with Wallet Connection */}
       <div className="w-full max-w-3xl mb-16">
         <div className="flex flex-col items-center mb-4">
-          <h1 
-            onClick={() => navigate('/')}
-            className="text-3xl font-bold text-[#FF9900] cursor-pointer hover:text-[#CC7A00] transition-colors mb-4"
-          >
-            PrediMove
-          </h1>
-          <div className="bg-[#FFB84D] rounded-2xl p-2">
-         Connect
-          </div>
+          <h1 className="text-3xl font-bold text-[#FF9900] mb-4">PrediMove</h1>
+          <ConnectButton />
         </div>
         <div className="h-px bg-[#FFB84D]/60 w-full mt-4"></div>
       </div>
