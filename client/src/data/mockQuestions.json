@@ -1,0 +1,31 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Will Movement Labs reach 1M transactions by Q2 2025?",
+      "totalStake": "2.5 MOVE",
+      "yesPercentage": 75,
+      "noPercentage": 25,
+      "endDate": "2024-04-30",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "question": "Will Movement Labs integrate with Ethereum L2s in 2025?",
+      "totalStake": "5.8 MOVE",
+      "yesPercentage": 82,
+      "noPercentage": 18,
+      "endDate": "2024-12-31",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "question": "Will MOVE token reach $1 in 2025?",
+      "totalStake": "10.2 MOVE",
+      "yesPercentage": 65,
+      "noPercentage": 35,
+      "endDate": "2024-12-31",
+      "status": "active"
+    }
+  ]
+} 

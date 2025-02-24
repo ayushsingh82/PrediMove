@@ -4,10 +4,10 @@ version = "1.0.0"
 authors = []
 
 [addresses]
+QuestionModule = "_"
 
 [dev-addresses]
-
-onchain_bio_addr = "0x3813495975339225f0b2bb4eda171792e15de65a62021af638d8668e35d21d40"
+QuestionModule = "0x3813495975339225f0b2bb4eda171792e15de65a62021af638d8668e35d21d40"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-framework.git"

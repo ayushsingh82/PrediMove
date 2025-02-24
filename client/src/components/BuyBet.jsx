@@ -159,7 +159,7 @@ function BuyBet() {
             {/* Amount Input */}
             <div className="bg-white/80 p-5 rounded-xl border border-[#FFB84D]">
               <label className="block text-[#664400] font-semibold mb-2">
-                Amount (FLOW)
+                Amount (MOVE)
               </label>
               <input
                 type="number"
