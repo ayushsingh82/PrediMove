@@ -33,4 +33,4 @@ This project is licensed under the MIT License.
 
 ---
 
-Happy predicting with **PredictMantle**! 🚀
+Happy predicting with **PredictMove**! 🚀
